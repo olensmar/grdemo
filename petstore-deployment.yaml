@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petstore-deployment
+  namespace: ""
+replicas: 1
+selector:
+  matchLabels:
+    app: petstore
+template:
+  metadata:
+    name: petstore-pod
+    labels:
+      app: petstore
+  spec:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 3000
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
+    containers:
+      - name: petstore-container
+        image: swaggerapi/petstore:latest
+        resources:
+          limits:
+            cpu: 1
+            memory: 256Mi
+          requests:
+            cpu: 500m
+            memory: 128Mi
+        securityContext:
+          allowPrivilegeEscalation: false
