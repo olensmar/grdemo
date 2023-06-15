@@ -24,12 +24,3 @@ template:
     containers:
       - name: petstore-container
         image: swaggerapi/petstore:latest
-        resources:
-          limits:
-            cpu: 1
-            memory: 256Mi
-          requests:
-            cpu: 500m
-            memory: 128Mi
-        securityContext:
-          allowPrivilegeEscalation: false
