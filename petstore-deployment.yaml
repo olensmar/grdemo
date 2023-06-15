@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petstore-deployment
+  namespace: ""
+replicas: 1
+selector:
+  matchLabels:
+    app: petstore
+template:
+  metadata:
+    name: petstore-pod
+    labels:
+      app: petstore
+  spec:
+    containers:
+      - name: petstore-container
+        image: swaggerapi/petstore:latest
