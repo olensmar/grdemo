@@ -13,14 +13,6 @@ template:
     labels:
       app: petstore
   spec:
-    securityContext:
-      runAsNonRoot: true
-      runAsUser: 1000
-      runAsGroup: 3000
-      readOnlyRootFilesystem: true
-      capabilities:
-        drop:
-          - ALL
     containers:
       - name: petstore-container
         image: swaggerapi/petstore:latest
